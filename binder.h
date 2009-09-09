@@ -1,8 +1,6 @@
-// Copyright (c) 2003 - 2004 Anselm R. Garbe <anselmg at t-online.de>
+// Copyright (c) 2003 - 2009 Anselm R Garbe <anselm@garbe.us>
 // Copyright (c) 2003 - 2004 Marcel Manthe <schneegloeckchen at gmx.li>
-// See ../LICENSE.txt for license details.
-//
-// $Id: binder.h 734 2004-09-27 18:15:45Z garbeam $
+// See LICENSE for license details.
 
 #ifndef __BINDER_H
 #define __BINDER_H

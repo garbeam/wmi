@@ -1,11 +1,7 @@
-$Id: INSTALL 735 2004-09-27 18:36:45Z garbeam $
-
 1. Required Software
 
 Make sure you have installed at least following software:
 
-* automake-1.5+
-* autoconf-2.5+
 * gcc-2.95+
 * X11R6 with Xlib and X headers
 * STL library and headers

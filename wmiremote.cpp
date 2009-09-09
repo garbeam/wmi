@@ -1,11 +1,8 @@
-// Copyright (c) 2003 - 2004 Anselm R. Garbe <anselmg at t-online.de>
-// See ../LICENSE.txt for license details.
-//
-// $Id: wmiremote.cpp 734 2004-09-27 18:15:45Z garbeam $
-
-#include "../version.h"
+// Copyright (c) 2003 - 2009 Anselm R Garbe <anselm@garbe.us>
+// See LICENSE for license details.
 
 extern "C" {
+#include <stdlib.h>
 #include <unistd.h> // getopt stuff
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>

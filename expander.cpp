@@ -1,7 +1,5 @@
-// Copyright (c) 2003 - 2004 Marcel Manthe <schneegloeckchen at gmx.li>
-// See ../LICENSE.txt for license details.
-//
-// $Id: expander.cpp 734 2004-09-27 18:15:45Z garbeam $
+// Copyright (c) 2003 - 2009 Anselm R Garbe <anselm@garbe.us>
+// See LICENSE for license details.
 
 extern "C" {
 #include <unistd.h>

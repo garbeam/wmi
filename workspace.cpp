@@ -1,6 +1,5 @@
-// See ../LICENSE.txt for license details.
-//
-// $Id: workspace.cpp 739 2004-09-28 07:17:12Z garbeam $
+// Copyright (c) 2003 - 2009 Anselm R Garbe <anselm@garbe.us>
+// See LICENSE for license details.
 
 extern "C" {
 #include <assert.h>
