@@ -1,0 +1,418 @@
+$Id: ChangeLog 735 2004-09-27 18:36:45Z garbeam $
+
+wmi-10:
+    * cycling workspaces focusses the last focussed client
+    * toggle-statusbar-mode for displaying client title instead of
+      workspace pager and detached-clients, useful for long client
+      names
+    * renamed startup-action.name to startup.chain, now you can provide
+      arbitrary action names in a comma separated list for the startup.chain,
+      default is single "rehash" action
+    * removed groups
+    * renamed ex-floatbar into clientbar
+    * renamed toggle-status-mode into toggle-clientbar-mode
+    * improved mode pager button on client bar, filled means that there're
+      clients attached, unfilled means, no clients attached
+    * removed statusbar.status-width option which is calculated now
+      automatically
+    * renamed toggle-focus-mode into toggle-mode
+    * new menu button on new clientbar
+    * new menu for fast selection of clients and fast attaching detached
+      clients, also for fast action invocation
+    * new common.conf option 'menu.actions' for actions definition
+      within menu
+    * applied several patches by Dr. Pfefferl
+    * fixed BUG-24 (label overlapping)
+    * fixed toggle-max issues
+    * removed cycle-frame-*
+    * fixed bar and button sizes
+    * new theme colors for focus requests
+        color.focusreq.background
+        color.focusreq.text
+        color.focusreq.shine
+        color.focusreq.shadow
+    * changed default theme to zahod's industrial theme contribution
+    * implemented race prevention for EnterNotify's of sloppy focus stuff
+      with floating clients
+    * fixed broken destroy-* actions
+    * improved sticky handling, now sticky does not mean raised on top
+    * detached clients will get attached again after restart
+    * fixed following BUGS
+      BUG-51 (detaching firefox crashed wmi)
+      BUG-50 (endless resizing due to missing increment hint handling)
+      BUG-49 (destroy action have been broken)
+      BUG-39 (don't run startup.chain on restart) -> invalid, no bug
+    * implemented new actions 'hook-client' and 'unhook-client' which
+      make it possible to hook clients to specific workspaces
+    * Eliminated several BadWindow and BadMatch occurences
+    * autocompletion.mode option of common.conf reappeared, now
+      with two possibilities - 'default' and 'regex'
+    * improved menu with missing button functions, especially right click
+      on workspace items or clients (middle button click now inserts cut
+      buffer into client)
+    * new action 'toggle-sloppy-mode' which toggles the sloppy focussing
+      on the fly
+    * removed resize-move.info option, because bar is not supported anymore,
+      be a fan of pseudo resize info centered within pseudo client borders
+    * implemented meters controlled by wmiremote with special syntax -
+      wmiremote -m <percentage>#<text>,<precentage>#<text>,...
+    * Marcel implemented regexp support for input mode, just compile wmi
+      with --with-posix-regex and set autocompletion.mode=regex in 
+      common.conf to enable it
+    * new slot.tabs entry for common.conf to create several slot tabs, use
+      this option like slot.tabs=default,icq,dockapps
+    * renamed toggle-client-bar into toggle-clientbar
+    * renamed toggle-status-bar into toggle-statusbar
+    * renamed toggle-inputmode into inputmode
+    * each workspace remembers the last focussed slot tab now
+    * removed --with-stacked-tabbing compile option, use cycle.mode= option
+      in common.conf instead
+    * improved clientbar illumination
+    * fixed toggle-slot brokeness after snap 558
+    * now using Container for slot tabs also
+    * using CClient and CFrame (Container types) for workspace/monitor stuff,
+      to also support stacked tabbing for frames, detached, floating and sticky
+      clients
+    * slot raises on every mode change action
+    * shortcut handling is now improved
+    * new widget class for menu, slot and bar with default methods
+    * WM_TRANSIENT_FOR is taken into account now when setting maximized/float
+      settings for new windows through a patch by Ryan Sorensen
+    * new default.transient-mode={float,max} for default placement of
+      transients
+    * some general transient fixes
+    * sloppy focus focusses windows only, not raising them (raise with
+      click instead)
+    * slot improvements finished now - new cycle-slot-tab-prev/next
+      actions, implemented focus for slot, now you can easily focus an
+      slot app through mouse-over (enter) events
+    * toggle-mode now validates if senseful (if no client is attached
+      within the specific mode, toggle-mode is invalid)
+    * new colors for meters -
+          color.meter.background
+          color.meter.figure
+          color.meter.border.shine
+          color.meter.border.shadow
+    * new default.bar-mode={show,hide} and default.border-mode={show,hide}
+      options for common.conf to show hide borders/bars of
+      clients/frames by default
+    * implemented slot.mode={overlap,non-overlap} to get a
+      (non-)overlapping slot
+    * implemented '~' expansion for input mode
+    * new kill-slot-client action for killing focussed slot client
+    * new regex-mode for the input-line. compile with '--with-posix-regex'
+      and turn it on in common.conf with 'autocompletion.mode=regex'
+    * WMI shows a special box now when awaiting more keystrokes
+      (e.g. in sequential shortcut chains)
+    * implemented raise action, this fits better with current focussing
+      model (to prevent FocusOnClick if a client is already focused)
+    * mouse shortcuts are only allowed in single shortcuts or shortcut
+      chain prefixes but not in chain shortcuts
+    * improved shortcut handling with following ratpoison-alike
+      behavior - if you press same keystroke of a shortcut chain twice,
+      it'll send to the client (instead processed), this works only with
+      shortcut chains, not with simple shortcuts
+    * fixed several bogus window occurances
+    * removed slot.adjustment property - slot now always is adjusted
+      top-down (because of new overlap mode this is needed/simplified)
+    * renamed bind-keys action to bind-shortcut
+    * new action toggle-shortcuts implemented which ungrabs all
+      keybindings, except itself and inputmode keybinding until next
+      toggle-shortcuts action
+    * slot now takes only the height it needs (especially useful for
+      overlap mode of slot)
+    * implemented new select-monitor action for multihead configurations
+    * renamed attach-client to attach-last-client
+    * new attach-client action which provides a list of all detached
+      clients in input mode
+    * splitted color.meter.figure into three new colors as follows -
+        color.meter.figure.high (>66)
+        color.meter.figure.normal (<33)
+        color.meter.figure.low (else)
+    * improved wmiremote -m syntax, now wmi understands
+        wmiremote -m '!80#apm' as color negation from high to low or
+        vice versa
+    * applied Johann Pfefferl's patch which fixes 
+      BUG-03 (if frame is resized over boundaries it gets obscured)
+    * fixed slot toggling bug reported by Kathryn Andersen
+    * lower has reappeared as Kathryn requested
+    * improved select-frame-* policy which prefers last directional
+      focussed frame before lowest distance policy (was a feature
+      request by grayrest)
+    * IconicState apps are started detached now
+    * reenabled slot solid filling till down bar when slot.style=solid
+      and slot.mode=non-overlap options are given in this specific way
+    * hook-client now works also for slot-tabs (you've to explicitly
+      focus the slot'ed client to hook it to a specific tab)
+    * action grab-move implemented which is bound by default to
+      mod1+Button1 to grab floating clients for moving (useful if
+      titlebars/borders are hidden)
+    * normalized the meter syntax from NN#<text> to NN%<text> (% is new
+            delimeter)
+    * frame.colwidth option for tiled mode (1..99)
+    * frame.autodestroy option for autodestroying frames (empty
+           frames are allowed now) ('yes' or 'no')
+    * frame.mode option which takes 'tabbed' or 'tiled' as argument
+    * toggle-tiled and zoom-client actions for tiled mode
+    * fixed slot persistence bug
+    * fixed frame resize related problems on workspace change
+    * new colors for tiled definitions
+        color.tiled.shine.focussed
+        color.tiled.shadow.focussed
+        color.tiled.shine.normal
+        color.tiled.shadow.normal
+    * closed open bugs, most are fixed, some multihead issues and some
+      fullscreen issues still exist
+    * updated manual pages
+
+
+
+wmi-9:
+    * split toggle-bars to show-bars, hide-bars
+    * split toggle-borders to show-borders, hide-borders
+    * rename toggle-unfocussed-group to hide-other-groups, show-other-groups
+    * removed lock actions cause of minimalism issues, use xlock instead,
+      also removed lock.password from common.conf
+    * added new startup-action.name property into common.conf which invokes
+      a startup action after start or restart of WMI
+    * implemented bar/slot visibility on a per workspace basis
+    * fixed cycle-workspace-prev issues
+    * tab based autocompletion, new common.conf property
+      'autocompletion.mode={confirm,auto}', confirm means use tab
+      instead of autocomplete after each key press
+    * implemented button bindings in conjunction with a valid modifier
+    * implemented cycle-{workspace,group}-prev/next if WMI is not compiled
+      with stacked tabbing order supported which focusses prev/next
+      workspace or group in the logical order (not in the stacking order)
+    * implemented previous behavior also with cycle-{frame,client}-*
+    * implemented Lock keys handling, now NumLock and ScrollLock are
+      ignored by shortcuts if they're on or off
+    * implemented new autocompletion.mode for common.conf (also new default)
+      autoconfirm, thie is a mixture of original autocompletion and newer
+      confirm feature.
+    * new restart action implemented (currently without session management)
+    * new slot.adjustment property which provides top, center and bottom
+      adjustment of dockapps
+    * new slot.style property which provides a solid background filling
+      of the slot with bar background color (solid) or ignores it
+      (transparent)
+    * implemented new slot-client and unslot-client actions for moving
+      clients which aren't handled in the slot by default (because they
+      aren't Withdrawn) for let them go to the slot and back
+    * action arguments can now be smuggled to actions also via input
+      mode, e.g. exec*xterm, create-workspace+5, etc.
+    * gravity support, now emacs behaves ok (and all related bugs)
+    * removed explicit Settings class (not needed anymore)
+    * removed explicit Bindings class (not needed anymore)
+    * various code refactorings to met new fixed issues more convenient
+    * removed other-groups.mode option because we already have
+      show-/hide-other-groups on the fly (which is more senseful, think
+      of floating dialog boxes of maximized apps ;))
+    * bar and slot visibility per workspace is now persistated in
+      session info
+    * the diamond box now looks like a honeycomb
+    * implemented prevent button invocation when a client/frame is not focussed
+    * removed sloppy mode, now all frames/clients are focusable through
+      a simple click
+    * toggle-pointer removed because we've no sloppy mode or warpPointer
+      stuff anymore
+    * implemented new select-client-id action
+    * fixed several multihead issues
+    * applied Andreas Gunnarsson nextNeighbor (Split) patch
+    * fixed broken multihead support
+    * removed resize-move.mode, because opaque move/resizing is not
+      really needed (KISS)
+    * improved split stuff, now select-frame-dir works perfect, also
+      all resizings work perfectly
+    * made transient handling ICCCM compliant
+    * removed double-parenting of clients attached to frames, now several
+      menu-popup issues should been fixed
+    * fixed gvim resize bug (maybe xemacs too, but not tested yet)
+    * fixed transient related crash bug (at least existant in ImageMagick)
+    * allow bar/slot overlapping of floating clients (also outside viewport area)
+    * implemented new action 'fit-client' which fits a floating client into
+      worksapce area, if it has been moved outside visible workspace area
+      or is greater
+    * created configure argument --without-slot which disables the slot
+      at compile time
+    * fixed slot configure request issues (resize gkrellm when it
+      requests it)
+    * fixed (un)slot-client issues with xterm and other clients with
+      decoration
+    * fixed accidental slot placements of withdrawn clients
+    * fixed broken buttons/menus in various apps, especially in motif
+      apps
+    * fixed focus loss bug when focussing an empty group
+    * implemented group and workspace focussing remembering for session
+      handling
+    * fixed workspace pager updates for mouse wheel cycling
+    * fixed workspace frame re-adjusting bug when select or cycle
+      workspaces
+    * re-enabled sloppy frame focussing
+    * fixed bugs
+      BUG-20 (ddd crash),
+      BUG-19 (xmms, plan),
+      BUG-18 (grace),
+      BUG-17 (menus in acroread),
+      BUG-16 (larger clients than screen),
+      BUG-15 (document scrolling in acroread),
+      BUG-12 (resize issues of gvim),
+      BUG-08 (xv large images),
+      BUG-07 (matlab menu choosing),
+      BUG-06 (scan windows),
+      BUG-02 (middle point issues with toggle-client-mode),
+      BUG-01 (Xnest)
+    * fixed gmplayer issues
+    * fixed cycle-frame-prev/next bugs
+    * fixed bugs
+      BUG-27 (resizing transients)
+      BUG-10 (advi crash)
+    * input mode now gets raised if status bar is invisible
+    * beginning with double tab in input mode, next entry will be
+      focussed
+    * focused group raises all clients again
+    * improved split algorithm (now supports directional state resizing)
+    * new banish action implemented (equivalent to ratpoison)
+    * improved input mode again
+    * fixed bugs
+      BUG-37 (exec with / prefix)
+      BUG-34 was reported as user error
+      BUG-38 (restart ignored floating clients)
+      BUG-36 (focus issue after lower)
+      BUG-35 (bar visibility issues on cycle-workspace)
+      BUG-32 (workspace focus when select-client)
+      BUG-31 (client walking on continues toggle-client-mode)
+      BUG-28 (transient crahses)
+      BUG-25 (pseudo clients after restart)
+      BUG-23 (eiphany crash, may have been transient related)
+      BUG-22 (SDL app focus fix)
+      BUG-14 (title change of minimized apps)
+      BUG-11 (emacs builtin window cycling)
+      BUG-09 (rox self-resizing)
+      BUG-05 (ssh-tunneled gnuplot crash)
+      BUG-04 (ssh somehost password dialog crash)
+      BUG-02 (outside frame middlepoint crash)
+      BUG-32 (gkrellm crash in slot)
+      BUG-26 (rox d'n'd didn't worked)
+      BUG-13 (chain action arguments stuff)
+      BUG-30 (bogus client area issues)
+    * updated manual pages
+
+wmi-8:
+    * select-client action for monitor-wide fast focussing of clients
+    * cycle-frame action readded for cycling frames
+    * toggle-frames action added for toggling frames
+      (older raise-all-frames has been removed)
+    * cycle-group action added for group based cycling
+    * cycle-prev/next removed
+    * attach-all-clients action implemented which attaches all detached
+      clients to the current workspace
+    * changed tab colorization of unfocussed clients of the active group
+      to a different default than unfocussed clients of inactive groups
+    * dynamic border width configuration for frames and clients
+    * toggle-border(s) actions for toggling the border on the fly
+    * new stacking order remebering of all WMI objects (clients,
+      frames, groups, workspaces) implemented
+    * unfocussed-groups.mode option for common.conf implemented (this
+      option has two modes (show/hide) which is used for default hiding
+      other (unfocussed) groups
+    * toggle-unfocussed-groups action which toggles the visibility of
+      unfocussed groups implemented
+    * lock implemented using lock.password common.conf property
+    * sticky group (monitor-wide) implemented with new actions
+    * sticky-client action implemented which makes a client sticky
+    * unsticky-client action implemented which resets a sticky client
+      to normal floating state
+    * added frame.buttons option to common.conf for frame button visibility
+    * applied Marcin Pawliks control keys patch for input mode
+    * applied Markus Lindorfers patch for Solaris support
+    * implemented Xft support
+    * implemented new shortcut handling with abstract syntax
+      {extern,intern,chain}.<name>.keys=[<mod(s)>*<key>::]*<mod(s)>*<key>
+    * implemented new option 'default.client-mode' to common.conf
+      which sets the default mode for unknown apps.
+    * wmiremote -p pretty prints current key bindungs of running WMI
+      session as ASCII art to the terminal
+    * implemented mouse-wheel based workspace and group cycling
+    * eliminated various compiler warnings (mostly unserious ones)
+    * destroy-action for self-defined chain and extern actions implemented
+    * implemented select-frames action
+    * removed autowarping the pointer
+    * drastic code size optimizations (removed useless inlines,
+      made unsigned to explicit unsigned int, etc.)
+    * renamed toggle-frames to toggle-focus-mode
+    * renamed toggle-client-state to toggle-client-mode
+    * new default key bindings only using alt*<...>, shift*alt*<...> and
+      ctrl*alt*<...>
+    * removed detachAllButton from floatbar (consistency reasons)
+    * removed all left frame buttons
+    * close button now scales better by big fonts (only 3 pixel center)
+    * toggle-focus-mode button in floatbar now gives feedback about
+      active mode like (overlapping=floating/non-overlapping=maximized)
+    * implemented bigger tolerance for diagonal resize pointer
+    * new slot behavior for NeXTish dockapps (gkrellm experimental)
+      removed slot.width and slot.justification, fast invocation menu
+      not implemented yet, cause this should be done externally
+    * removed autoraising of grouped clients if a floating client
+      is attached/focussed
+    * ICCCM overwork (should solve most known BUGs)
+    * focus clients through click into client area with alt key pressed
+    * written welcome section in wmi(1) manual page for newbies
+    * pop up manual page wmi(1) within xterm when wmi is started first
+    * moved actions detail description to actions.conf file
+
+wmi-7:
+    * overworked split handling (tree map layout)
+    * wmiremote supports remote action invocation
+    * overworked theme engine/look'n'feel
+    * support for size hints
+    * fixed xterm startup issues
+    * layer handling completely overworked, renamed to group
+    * overworked input mode
+    * new end-record actions
+    * various serious bug fixings
+    * simplified shrink/grow handling
+    * simplified/consistentified cycling
+    * improved detach-all handling
+    * renamed max-client-to-screen to toggle-max
+    * new toggle-bars action
+    * new manual pages
+    * new various configuration options in common.conf
+    * removed "common." prefix in common.conf
+    * changed release schema
+    * new join-frame-* action to join frames (opposite of split-frame-*)
+    * new send-client-* action to move a client from one frame to another
+
+wmi-6:
+    * renamed several actions
+    * new default color scheme
+    * code size minimization/optimzation
+    * rudimentary slot behavior implemented
+    * new floating app bar
+    * new layer handling implemented
+    * fixed many major bugs
+    * removed tweak stuff
+
+wmi-5:
+    * overworked window handling for max/min size hints
+    * several new actions (toggle-*, exec-term, lower, raise)
+    * bind key auto completion for action names
+    * exec argument auto completion
+    * floating mode for frames enabled
+    * resize handling overwork
+    * borderless clients support
+    * major bug fixing for several crashes
+    * maps have been renamed to chains
+    * bar neighbor handling/toggle-*-bar overwork
+    * cursor fixes
+    * client grabbing performance boost
+
+wmi-4:
+    * new window concept implemented
+    * several major bugs fixed
+    * fully refactored WMI
+
+wmi-1 - wmi-3:
+    * don't remember exactly, very experimental milestones
+    * there've been only 5 hackers who used wmi around this
+      time beside the author itself

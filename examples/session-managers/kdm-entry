@@ -1,0 +1,14 @@
+Katryn Anderson proposed following entry to
+/usr/share/apps/kdm/sessions if you're using the
+KDM login manager:
+----------------------------------------------------------
+[Desktop Entry]
+Encoding=UTF-8 
+Type=XSession
+Exec=wmi
+TryExec=wmi
+Name=WMI
+Name[xx]=xxWMIxx
+Comment=Window-Manager Improved
+Comment[xx]=xxWindow-Manager Improvedxxxxxxxxxxxxxxxxxxx
+----------------------------------------------------------

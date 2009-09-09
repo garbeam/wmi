@@ -1,0 +1,237 @@
+.TH WMI 5 User Manuals
+.SH NAME
+WMI \- Window Manager Improved, a X11 window manager for hackers
+.SH DESCRIPTION
+The file \fItheme.conf\f1 is used to define the look and feel of WMI.
+.SH FORMAT
+The basic format of all \fI.conf\f1 and \fI.session\f1 files is as follows:
+
+key=value
+
+# comment
+
+key=\\#value # '\\' escapes special characters
+
+# special characters are: ", =, \\ and #
+
+If you've whitespaces within values, you've to quote them with '"' characters. You're free to let empty lines or whitespaces before and after keys, the '=' operator and the value. If you need a special character, you've to escape it using the '\\' character, e.g. \\=.
+.SH COLOR FORMAT
+Note that you can vary the syntax for color triplet definitions as follows:
+
+key=\\#nnnnnn
+
+or
+
+key="#nnnnnn"
+
+or
+
+key=blue
+
+This shows different escaping possibilities, the last case is useful for predefined X11 colors.
+
+The syntax: key=rgb:/nn/nn/nn
+is NOT supported.
+.SH TERMINOLOGY
+All color definitions begin with prefix 'color.', afterwards the object is appended to this prefix, e.g. 'label', 'button'.
+
+There are four types of colors per object (note that some have only three colors): 'background', 'text', 'shine' and 'shadow'. Background means the background filling color of the object, text means the color of text, if any, shine and shadow means the color of the objects border, where top-left border is the shine border and bottom-right is the shadow border.
+
+If an object is distinguished into active and inactive it may have the focus, like frames or tabs.
+.SH FORMAT
+Following look and feel option keys are defined:
+.SH OPTIONS
+.TP
+\fBcolor.bar.background=\f1
+Background color of float and status bar and input mode. 
+.TP
+\fBcolor.bar.shadow=\f1
+Shadow border of the float and status bar. 
+.TP
+\fBcolor.bar.shine=\f1
+Shine border of the float and status bar. 
+.TP
+\fBcolor.bar.text=\f1
+Text color of the status text within status bar and the input mode prompt. 
+.TP
+\fBcolor.button.background.normal=\f1
+Background color of not pressed buttons. 
+.TP
+\fBcolor.button.background.pressed=\f1
+Background color of pressed buttons. 
+.TP
+\fBcolor.button.border.shadow.normal=\f1
+Border shadow color of not pressed buttons. 
+.TP
+\fBcolor.button.border.shadow.pressed=\f1
+Border shadow color of pressed buttons. 
+.TP
+\fBcolor.button.border.shine.normal=\f1
+Border shine color of not pressed buttons. 
+.TP
+\fBcolor.button.border.shine.pressed=\f1
+Border shine color of pressed buttons. 
+.TP
+\fBcolor.button.figure.shadow.normal=\f1
+Figure shadow color of not pressed buttons. 
+.TP
+\fBcolor.button.figure.shadow.pressed=\f1
+Figure shadow color of pressed buttons. 
+.TP
+\fBcolor.button.figure.shine.normal=\f1
+Figure shine color of not pressed buttons. 
+.TP
+\fBcolor.focusreq.background=\f1
+Background color of an item which requests for focus. 
+.TP
+\fBcolor.focusreq.text=\f1
+Text color of an item which requests for focus. 
+.TP
+\fBcolor.focusreq.shine=\f1
+Shine border color of an item which requests for focus. 
+.TP
+\fBcolor.focusreq.shadow=\f1
+Shadow border color of an item which requests for focus. 
+.TP
+\fBcolor.button.figure.shine.pressed=\f1
+Figure shine color of pressed buttons. 
+.TP
+\fBcolor.frame.background.focussed=\f1
+Background color of the focussed frame. 
+.TP
+\fBcolor.frame.background.normal=\f1
+Background color of not focussed frames. 
+.TP
+\fBcolor.frame.pseudo=\f1
+XORed color of frame/client movements. 
+.TP
+\fBcolor.frame.shadow.focussed=\f1
+Shadow color of the focussed frame. 
+.TP
+\fBcolor.frame.shadow.normal=\f1
+Shadow color of not focussed frames. 
+.TP
+\fBcolor.frame.shine.focussed=\f1
+Shine color of the focussed frame. 
+.TP
+\fBcolor.frame.shine.normal=\f1
+Shine color of not focussed frames. 
+.TP
+\fBcolor.label.background.focussed=\f1
+Background color of focussed labels (workspace and group pager labels or focussed entry within input mode). 
+.TP
+\fBcolor.label.background.normal=\f1
+Background color of not focussed labels (workspace and group pager labels or focussed entry within input mode). 
+.TP
+\fBcolor.label.shadow.focussed=\f1
+Shadow border color of focussed labels (workspace and group pager labels or focussed entry within input mode). 
+.TP
+\fBcolor.label.shadow.normal=\f1
+Shadow border color of not focussed labels (workspace and group pager labels or focussed entry within input mode). 
+.TP
+\fBcolor.label.shine.focussed=\f1
+Shine border color of focussed labels (workspace and group pager labels or focussed entry within input mode). 
+.TP
+\fBcolor.label.shine.normal=\f1
+Shine border color of not focussed labels (workspace and group pager labels or focussed entry within input mode). 
+.TP
+\fBcolor.label.text.focussed=\f1
+Text color of focussed labels (workspace and group pager labels or focussed entry within input mode). 
+.TP
+\fBcolor.label.text.normal=\f1
+Text color of not focussed labels (workspace and group pager labels or focussed entry within input mode). 
+.TP
+\fBcolor.meter.background=\f1
+Background color of a meter. 
+.TP
+\fBcolor.meter.figure.high=\f1
+High color of a meter. 
+.TP
+\fBcolor.meter.figure.normal=\f1
+Normal color of a meter. 
+.TP
+\fBcolor.meter.figure.low=\f1
+Low color of a meter. 
+.TP
+\fBcolor.meter.border.shine=\f1
+Shine border color of a meter. 
+.TP
+\fBcolor.meter.border.shadow=\f1
+Shadow border color of a meter. 
+.TP
+\fBcolor.meter.text=\f1
+Text color of a meter. 
+.TP
+\fBcolor.tab.background.active.focussed=\f1
+Background color of active tab within focussed frame. 
+.TP
+\fBcolor.tab.background.active.normal=\f1
+Background color of active tab within not focussed frame. 
+.TP
+\fBcolor.tab.background.inactive.focussed=\f1
+Background color of inactive tab within focussed frame. 
+.TP
+\fBcolor.tab.background.inactive.normal=\f1
+Background color of inactive tab within not focussed frame. 
+.TP
+\fBcolor.tab.shadow.active.focussed=\f1
+Shadow color of active tab within focussed frame. 
+.TP
+\fBcolor.tab.shadow.active.normal=\f1
+Shadow color of active tab within not focussed frame. 
+.TP
+\fBcolor.tab.shadow.inactive.focussed=\f1
+Shadow color of inactive tab within focussed frame. 
+.TP
+\fBcolor.tab.shadow.inactive.normal=\f1
+Shadow color of inactive tab within not focussed frame. 
+.TP
+\fBcolor.tab.shine.active.focussed=\f1
+Shine color of active tab within focussed frame. 
+.TP
+\fBcolor.tab.shine.active.normal=\f1
+Shine color of active tab within not focussed frame. 
+.TP
+\fBcolor.tab.shine.inactive.focussed=\f1
+Shine color of inactive tab within focussed frame. 
+.TP
+\fBcolor.tab.shine.inactive.normal=\f1
+Shine color of inactive tab within not focussed frame. 
+.TP
+\fBcolor.tab.text.active.focussed=\f1
+Text color of active tab within focussed frame. 
+.TP
+\fBcolor.tab.text.active.normal=\f1
+Text color of active tab within not focussed frame. 
+.TP
+\fBcolor.tab.text.inactive.focussed=\f1
+Text color of inactive tab within focussed frame. 
+.TP
+\fBcolor.tab.text.inactive.normal=\f1
+Text color of inactive tab within not focussed frame. 
+.TP
+\fBcolor.tiled.shine.focussed=\f1
+Shine border color of focussed tiled clients. 
+.TP
+\fBcolor.tiled.shadow.focussed=\f1
+Shadow border color of focussed tiled clients. 
+.TP
+\fBcolor.tiled.shine.normal=\f1
+Shine border color of unfocussed tiled clients. 
+.TP
+\fBcolor.tiled.shadow.normal=\f1
+Shine border color of unfocussed tiled clients. 
+.TP
+\fBexec=\f1
+Execution of a command, e.g. setting the background wallpaper which is invoked while loading the theme (while startup of WMI). 
+.TP
+\fBfont=\f1
+The font of labels, tabs and bars. Note that the height of buttons and bars is scaled to match with the font size of the defined font. If you want to have bigger or smaller bars and buttons simply choose a bigger or smaller font.
+.SH AUTHOR
+WMI was written by Anselm R. Garbe < anselmg@t-online.de > and others (see AUTHORS or the WMI site for further information)
+
+You will find the newest version of WMI at \fBhttp://wmi.berlios.de/\f1. There is also a mailing list.
+.SH BUGS
+You should report them to the mailing list.
+.SH SEE ALSO
+\fBwmi(1)\f1, \fBwmiremote(1)\f1, \fBactions.conf(5)\f1, \fBcommon.conf(5)\f1 \fBsession.conf(5)\f1, 

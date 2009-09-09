@@ -1,0 +1,7 @@
+$Id: BUGS 735 2004-09-27 18:36:45Z garbeam $
+
+Grep the wmi-devel mailinglist on http://wmi.berlios.de for known bugs.
+If your bug is not known or seems not to be, just post a mail to
+Anselm R. Garbe <anselmg at t-online.de> or to the wmi-devel list.
+
+We don't use the BerliOS bugtracker yet.

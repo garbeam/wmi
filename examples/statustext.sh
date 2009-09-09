@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# Copyright (c) 2003 - 2004 Anselm R. Garbe <anselmg at t-online.de>
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the 
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in 
+# all copies or substantial portions of the Software. 
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL 
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+# DEALINGS IN THE SOFTWARE.
+#
+# $Id: statustext.sh 140 2004-05-05 22:29:34Z garbeam $
+
+# statustext.sh - shows date/time and APM status on the status bar.
+#
+# Just add following line to your .xinitrc to launch this status text:
+#
+# exec <patch-to-this-dir>/statustext.sh&
+# (or whatever file name you prefer)
+#
+
+# time format
+TFORMAT="%d.%m., %H:%M"
+
+while true
+do
+    MSG=`date "+${TFORMAT}"`
+    APM=`cat /proc/apm| awk '{ print $7 }'`
+
+    wmiremote -t "[$APM]  [$MSG]"
+
+# launched every 10 seconds
+    sleep 10
+done

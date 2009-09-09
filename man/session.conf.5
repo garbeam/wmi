@@ -1,0 +1,37 @@
+.TH WMI 5 User Manuals
+.SH NAME
+WMI \- Window Manager Improved, a X11 window manager for hackers
+.SH DESCRIPTION
+The file \fIsession.conf\f1 is for experts only. Here special client class/instance hints can be set and a user defined layout (workspace, layer and frame configuration) can be adjusted. Normally this is the job of WMI, but maybe there're people who want adjust everything by hand.
+
+If so, you may ask questions concerning session.conf on the wmi-devel mailinglist. This manual page only covers the basic class/instance syntax for client hints.
+
+Note that \fIsession.conf\f1 is syntactically equal to \fIwmi.session\f1 which can be used as starting point for understanding the expert syntax, which is quiet easy to understand - I think :) 
+.SH FORMAT
+The basic format of all \fI.conf\f1 and \fI.session\f1 files is as follows:
+
+key=value
+
+# comment
+
+key=\\#value # '\\' escapes special characters
+
+# special characters are: ", =, \\ and #
+
+If you've whitespaces within values, you've to quote them with '"' characters. You're free to let empty lines or whitespaces before and after keys, the '=' operator and the value. If you need a special character, you've to escape it using the '\\' character, e.g. \\=.
+.SH BASIC SYNTAX
+The basic syntax for setting client class/instance hints is as follows:
+
+client.< class >::< instance >.mode=(float|max)
+
+This setting gives WMI the hint, if an application should be running in maximized mode (default) or run as floating application.
+
+Note that borderless applications will never be maximized whatever you may define.
+.SH AUTHOR
+WMI was written by Anselm R. Garbe < anselmg@t-online.de > and others (see AUTHORS or the WMI site for further information)
+
+You will find the newest version of WMI at \fBhttp://wmi.berlios.de/\f1. There is also a mailing list.
+.SH BUGS
+You should report them to the mailing list.
+.SH SEE ALSO
+\fBwmi(1)\f1, \fBwmiremote(1)\f1, \fBactions.conf(5)\f1, \fBcommon.conf(5)\f1, \fBtheme.conf(5)\f1

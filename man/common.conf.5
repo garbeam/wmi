@@ -1,0 +1,87 @@
+.TH WMI 5 User Manuals
+.SH NAME
+WMI \- Window Manager Improved, a X11 window manager for hackers
+.SH DESCRIPTION
+The file \fIcommon.conf\f1 is used to fine adjust the common options of WMI.
+.SH FORMAT
+The basic format of all \fI.conf\f1 and \fI.session\f1 files is as follows:
+
+key=value
+
+# comment
+
+key=\\#value # '\\' escapes special characters
+
+# special characters are: ", =, \\ and #
+
+If you've whitespaces within values, you've to quote them with '"' characters. You're free to let empty lines or whitespaces before and after keys, the '=' operator and the value. If you need a special character, you've to escape it using the '\\' character, e.g. \\=.
+.SH OPTIONS
+Following option keys are defined:
+.TP
+\fBautocompletion.mode=\f1
+Defines how to autocomplete in input mode. Valid values are 'regex' and 'default'.
+.TP
+\fBbar.buttons=\f1
+Defines wether the buttons of the float bar or statusbar are visible ('yes') or not visible ('no'), default is 'yes'.
+.TP
+\fBborder.width=\f1
+Defines the width of frame and client borders. Default is 3 pixels.
+.TP
+\fBdefault.bar-mode=\f1
+Defines if bars are visible by default or not. Values are 'show' and 'hide'.
+.TP
+\fBdefault.border-mode=\f1
+Defines if borders are visible by default or not. Values are 'show' and 'hide'.
+.TP
+\fBdefault.client-mode=\f1
+Defines if unknown clients are attached maxmized ('max') or floating ('float'). Default is 'float'.
+.TP
+\fBdefault.transient-mode=\f1
+Defines if unknown transient windows are attached maxmized ('max') or floating ('float'). Default is 'float'.
+.TP
+\fBframe.autodestroy=\f1
+Defines wether frames are automatically destroyed when empty or not. Valid values are 'yes' and 'no'.
+.TP
+\fBframe.buttons=\f1
+Defines wether the buttons of frames/clients are visible ('yes') or not ('no'), default is 'yes'.
+.TP
+\fBframe.colwidth=\f1
+Defines how much percentage is used for the left client in tiled mode of the frame width. Default is '66', valid values vary between 1 and 99.
+.TP
+\fBframe.mode=\f1
+Defines wether frames are tiled or tabbed by default. Valid values are 'tiled' and 'tabbed'.
+.TP
+\fBmenu.actions=\f1
+Defines which actions appear in the menu of the clientbar. The value is a comma-separated list of action names.
+.TP
+\fBresize-factor=\f1
+Defines the relative resize factor for keyboard driven resize or move operations. Relative means relative to the screen dimension. Useful values are between 1 and 30, default is 10.
+.TP
+\fBresize-info=\f1
+Defines where the resize information should be located. You can choose 'center' or 'bar' here, default is 'center'.
+.TP
+\fBslot.alignment=\f1
+Defines wether the slot appears 'right' or 'left', default is 'right'.
+.TP
+\fBslot.style=\f1
+Defines wether the slot should appear 'transparent' or 'solid'. Default is 'transparent'. Solid means fill with bar.background color.
+.TP
+\fBslot.tabs=\f1
+Defines the tabs of the slot. Values are a comma-seprated list of tab names.
+.TP
+\fBstatusbar.alignment=\f1
+Defines the alignment of the status bar, allowed are 'top' and 'bottom', default is 'bottom'.
+.TP
+\fBstatusbar.status-width=\f1
+Defines the relative (to monitor width) width of the space for user defined status information set by \fBwmiremote(1)\f1. Default is 30 (percent).
+.TP
+\fBterminal=\f1
+Defines the terminal command to use for the exec-term action, default is "xterm -e".
+.SH AUTHOR
+WMI was written by Anselm R. Garbe < anselmg@t-online.de > and others (see AUTHORS or the WMI site for further information)
+
+You will find the newest version of WMI at \fBhttp://wmi.berlios.de/\f1. There is also a mailing list.
+.SH BUGS
+You should report them to the mailing list.
+.SH SEE ALSO
+\fBwmi(1)\f1, \fBwmiremote(1)\f1, \fBactions.conf(5)\f1, \fBsession.conf(5)\f1, \fBtheme.conf(5)\f1

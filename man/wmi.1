@@ -1,0 +1,109 @@
+.TH WMI 1 User Manuals
+.SH NAME
+WMI \- Window Manager Improved, a X11 window manager for hackers
+.SH SYNOPSIS
+\fBwmi [-d \fIdisplay\fB] [-h] [-v]
+\f1
+.SH DESCRIPTION
+WMI is a new window manager for X11, which attempts to combine the best features of LarsWM (\fBhttp://home.earthlink.net/~lab1701/larswm/\f1), Ion (\fBhttp://modeemi.cs.tut.fi/~tuomov/ion/\f1), TrsWM (\fBhttp://www.relex.ru/~yarick/trswm/\f1), evilwm (\fBhttp://evilwm.sf.net\f1) and ratpoison (\fBhttp://ratpoison.sf.net\f1) into one window manager. The basic user interaction interface is pretty much oriented on the two modes of the widespread vi editor. 
+.SH OPTIONS
+Since WMI is a window manager most options are customized within configuration files, but there are following command line options: 
+.TP
+\fB-d \fIdisplay\fB\f1
+Specifies the X display to use. Normally WMI uses the display provided by the \fI$DISPLAY\f1 environment variable. But if you want to use another display, e.g. a display provided by a remote host, just use this option.
+.TP
+\fB-h\f1
+Prints short usage information about WMI.
+.TP
+\fB-v\f1
+Prints the version of WMI.
+.SH WELCOME
+If you're a newbie user and want getting started with WMI, it's recommended to read this manual page and at least \fBactions.conf(5)\f1. Alternativly you can also read the tutorial at the WMI website \fBhttp://wmi.berlios.de/\f1 or following brief introduction. 
+
+It's assumed that you've already installed WMI successfully and started it already. If it's the first time you've started WMI, you'll see this manual page automatically within a xterm. 
+
+The next thing you can do is to toggle the client mode of the running xterm using alt+m shortcut. If your client was small, it'll be maximized afterwards. Make sure that the terminal is maximized before proceeding with next steps. 
+
+Next step is to examine the input mode. WMI comes with two modes, the input mode and the normal mode. By default you're in the normal mode. To enter the input mode just press alt+i. 
+
+Before we proceed keep in mind that you can cycle back to this window using alt+Tab. 
+
+Within input mode you'll see all internal actions which would have currently any effect. You can press some keys to notice how the input mode autocompletes the actions. Press backspace for deleting all characters you entered until next match. 
+
+First we're going to exec a new xterm. So enter 'e' and the exec action will be focussed. Now press RETURN to invoke the 'exec' action. Afterwards you'll see all binaries which are in your PATH environment. 
+
+Now enter 'xt' to select 'xterm' and press RETURN. Afterwards a new xterm has been started. 
+
+In this xterm we call wmiremote now to determine current default key bindings. Just enter 'wmiremote -p' in your terminal. Afterwards you'll get all currently used key bindings. 
+
+Key bindings which have a '::' within are sequential key bindings, e.g. alt+s::l means pressing alt+s and afterwards l to invoke the specific action. 
+
+Now we will try to split the current two xterms into two frames. So press the key binding for the action 'split-frame-left' which is alt+s::l by default. Note that splitting frames is only possible, if there're at least two clients attached to the specific frame you're going to split. The opposite action is 'join-frame-right' which is used to join splitted frames together again. 
+
+We're now going to make the focussed xterm floating again. Press alt+m again. You'll notice that the floating xterm is attached to a group on the top bar.
+
+If you now toggle the floating xterm back to maximized mode, it'll be attached to the previous frame again. You can cycle between the clients using alt+Tab as you know it from conventional window managers. 
+
+To getting further started, just read further in this manual page.
+.SH TERMINOLOGY
+To use WMI successfully you've to understand some often used words which have a special meaning and are described in the following.
+.TP
+\fBAction: \f1
+all internal functions, userdefined aliases to such functions, userdefined aliases to external applications and userdefined aliases for sequences of internal functions or aliases are called actions. Three types of actions are distinguished: internal (intern), external (extern) and sequential (chain).
+.TP
+\fBClient: \f1
+each window is called a client, regardless if it has a border (like most X clients) or not (like XMMS). Clients can be attached to frames (see below) in a maximized manner or attached in a floating manner.
+.TP
+\fBDirection: \f1
+all actions concerning non-overlapping frame handling are used in a directional manner. WMI distinguished the four base directions: west (left), east (right), north (up), south (down).
+.TP
+\fBFloating bar: \f1
+a bar in the opposite position of the status bar which contains a group pager and displays all clients attached to the focussed group. If the status bar has been configured to appear at bottom (default), the floating bar will appear at top, and vice versa.
+.TP
+\fBFrame: \f1
+frames are special container windows which are arranged in a non-overlapping manner on the workspace (see below). Frames may contain an arbitrary number of maximized clients. Frames can be split in several frames or merged together in a directional manner. Frames of WMI are pretty similiar to frames of the Ion window manager. There's no limit of numbers of frames per workspace.
+.TP
+\fBMode: \f1
+since WMI is strongly oriented on the vi-alike usage, it comes with two modes: input mode and normal mode. The input mode is used for invoking WMI specific actions, the normal mode is used for the allday work with your clients. In vi the input mode is the command mode, where ex commands are invoked and the normal mode of WMI is comparable to the editing mode in vi.
+.TP
+\fBMonitor: \f1
+in multi-head X configurations WMI is able to handle several screens. One screen in X terminology is a monitor in WMI terminology. Note: future versions of WMI will have built-in Xinerama support.
+.TP
+\fBShortcut: \f1
+a shortcut is a user defined key combination for an action, consisting of modifiers (or none) and a key or mouse button identifier.
+.TP
+\fBSlot: \f1
+the slot is a special area on the monitor visible on all workspaces which is used for withdrawn apps such as gkrellm or NeXTish dockapps from AfterStep or WindowMaker.
+.TP
+\fBStatus bar: \f1
+a bar which contains a workspace pager, some space for user defined status information using the wmiremote tool and which displays all (monitor-wide) detached clients.
+.TP
+\fBSticky clients: \f1
+Sticky clients are clients which are always on top and visible on all workspaces. Commonly sticky clients are applications providing status information or your favorite video media player. Note that sticky clients aren't visible at floating or statusbar because they're always on top. 
+.TP
+\fBWorkspace: \f1
+a (virtual) workspace is used as virtual container of frames and floating clients on a specific screen (monitor), which can be used as virtual desktop. There's no limit of workspaces on a monitor.
+.SH ACTIONS
+WMI comes with many built-in actions, which are described in \fBactions.conf(5)\f1. 
+.SH CONFIGURATION
+WMI is mainly configured through several files which should be located in \fI$ETCDIR/wmi/\f1 or in \fI$HOME/.wmi/\f1.
+
+Files are distinguished by their name and extension. In any circumstances don't touch \fI*.session\f1 files in your \fI$HOME/.wmi/\f1 directory, since they contain automatically saved stuff and any change would only take effect until next save-settings or quit action. Only edit \fI*.conf\f1 files manually. If they're located in \fI$ETCDIR/wmi/\f1 their properties will be valid for all users, otherwise if they're located in \fI$HOME/.wmi/\f1 their properties will be valid only for the specific user. Note, that changes made to files within \fI$HOME/.wmi/\f1 may override properties from \fI$ETCDIR/wmi/\f1.
+
+Following files are valid configuration files: 
+
+\fBactions.conf(5)\f1: This file contains manually configured actions and shortcuts for actions.
+
+\fBcommon.conf(5)\f1: This file contains some common options.
+
+\fBsession.conf(5)\f1: This file contains properties which should override properties in \fIwmi.session\f1.
+
+\fBtheme.conf(5)\f1: This file contains all properties which influence the look and feel of the WMI.
+.SH AUTHOR
+WMI was written by Anselm R. Garbe < anselmg@t-online.de > and others (see AUTHORS or the WMI site for further information)
+
+You will find the newest version of WMI at \fBhttp://wmi.berlios.de/\f1. There is also a mailing list.
+.SH BUGS
+You should report them to the mailing list.
+.SH SEE ALSO
+\fBwmiremote(1)\f1, \fBactions.conf(5)\f1, \fBcommon.conf(5)\f1, \fBsession.conf(5)\f1, \fBtheme.conf(5)\f1

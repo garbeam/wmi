@@ -1,0 +1,1 @@
+#define __WMI_VERSION "@VERSION@"

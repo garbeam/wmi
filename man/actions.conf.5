@@ -1,0 +1,366 @@
+.TH WMI 5 User Manuals
+.SH NAME
+WMI \- Window Manager Improved, a X11 window manager for hackers
+.SH DESCRIPTION
+The file \fIactions.conf\f1 is used to define actions manually. Three types of actions are supported: external (extern), internal (intern) and sequential (chain) actions. The internal actions are described in the following section.
+.SH INTERN ACTIONS
+Note, most actions are context-sensitive, this means that they are only available, if they would have any effect.
+.TP
+\fBattach-all-clients: \f1
+Attaches all detached clients. 
+.TP
+\fBattach-client: \f1
+Attaches an detached client to the workspace. If the client has been detached as floating client, it'll be attached as floating client again, otherwise if will be attached to the focussed frame, or to a new frame, if there does not exist a frame yet. 
+.TP
+\fBbanish: \f1
+Banishes the pointer to bottom-right corner. 
+.TP
+\fBbegin-record: \f1
+Begins recording all WMI specific actions until end-record-* or cancel-record will be invoked, except entering interactive mode and end-record-*. 
+.TP
+\fBbind-keys: \f1
+Creates a shortcut for a specific action. 
+.TP
+\fBcancel-record: \f1
+Cancels the recording of actions immediately. 
+.TP
+\fBcreate-action: \f1
+Creates a new action alias for an external application. 
+.TP
+\fBcreate-workspace: \f1
+Creates a new workspace on the focussed monitor. 
+.TP
+\fBcycle-client-next: \f1
+Focusses next client within a frame. 
+.TP
+\fBcycle-client-prev: \f1
+Focusses previous client within a frame. 
+.TP
+\fBcycle-slot-tab-next: \f1
+Focusses next slot tab of the slot. 
+.TP
+\fBcycle-slot-tab-prev: \f1
+Focussed previous slot tab of the slot. 
+.TP
+\fBcycle-workspace-next: \f1
+Focusses next workspace on the monitor. 
+.TP
+\fBcycle-workspace-prev: \f1
+Focusses previous workspace on the monitor. 
+.TP
+\fBdestroy-action: \f1
+Destroys a selected extern- or chain-action. Always valid. 
+.TP
+\fBdestroy-workspace: \f1
+Destroys the focussed workspace. Only valid if no clients or frames are attached to this workspace and at least another workspace exists. 
+.TP
+\fBdetach-all-clients: \f1
+Detaches all clients from focussed frame or all floating clients. 
+.TP
+\fBdetach-client: \f1
+Detaches the focused client. 
+.TP
+\fBend-record-chain: \f1
+Ends recording actions and provides to create a chain action, which will invoke all recorded actions sequentially through only one alias name. 
+.TP
+\fBend-record-script: \f1
+Ends recording actions and provides to save all recorded actions to a shell script which uses wmiremote for remote invocation of the actions. This enables flexible pseudo session management. 
+.TP
+\fBexec: \f1
+Provides a list of all executables in the \fI$PATH\f1 environment, which can be executed. You can also use the '/' character to browse through your directories and choose an executable which isn't available through the \fI$PATH\f1 environment. You can also smuggle additional command arguments behind the executable name, as you know it from the command line. But note that this is not as powerful as you use the shell. Note, that exec executes the choosen application directly. 
+.TP
+\fBexec-term: \f1
+Same as exec, except that the action will be executed within the defined (see common.conf) default terminal. 
+.TP
+\fBgrow-down: \f1
+Grows the focussed floating client or frame in south direction. This action is not valid for borderless clients. 
+.TP
+\fBfit-client: \f1
+Fits the client size to workspace area. 
+.TP
+\fBgrow-left: \f1
+Grows the focussed floating client or frame in west direction. This action is not valid for borderless clients. 
+.TP
+\fBgrow-right: \f1
+Grows the focussed floating client or frame in east direction. This action is not valid fo borderless clients. 
+.TP
+\fBgrow-up: \f1
+Grows the focussed floating client or frame in north direction. This action is not valid for borderless clients. 
+.TP
+\fBhide-bars: \f1
+Hides all bars of all frames/clients on the workspace. 
+.TP
+\fBhide-borders: \f1
+Hides all borders of all frames/clients on the workspace. 
+.TP
+\fBhook-client: \f1
+Hooks a client to a specific workspace. Thus the specific clients class::instance will be attached automatically to the hooked workspace afterwards all the time. 
+.TP
+\fBjoin-frame-down: \f1
+Joins the focussed frame with its neighbor frame in south direction. 
+.TP
+\fBjoin-frame-left: \f1
+Joins the focussed frame with its neighbor frame in west direction. 
+.TP
+\fBjoin-frame-right: \f1
+Joins the focussed frame with its neighbor frame in east direction. 
+.TP
+\fBjoin-frame-up: \f1
+Joins the focussed frame with its neighbor frame in north direction. 
+.TP
+\fBkill-client: \f1
+Kills the focussed client. First WMI will try to let the client close itself, if the client ignores this request, it'll be killed. 
+.TP
+\fBkill-slot-client: \f1
+Kills the slotted client. 
+.TP
+\fBlower: \f1
+Lowers the focussed client or frame. 
+.TP
+\fBmax-client-to-screen: \f1
+Maximizes the focussed floating client to the whole screen. 
+.TP
+\fBmove-client-down: \f1
+Moves the focussed floating client in south direction. 
+.TP
+\fBmove-client-left: \f1
+Moves the focussed floating client in west direction. 
+.TP
+\fBmove-client-right: \f1
+Moves the focussed floating client in east direction. 
+.TP
+\fBmove-client-up: \f1
+Moves the focussed floating client in north direction. 
+.TP
+\fBquit: \f1
+Exits WMI and saves all settings. 
+.TP
+\fBraise: \f1
+Raises the focussed client or frame. 
+.TP
+\fBrehash: \f1
+Rereads the \fI$PATH\f1 environment for exec actions, this is useful after having installed new apps. It's pretty similiar to the (t)csh or zsh way of life. 
+.TP
+\fBrename-workspace: \f1
+Renames the focussed workspace. Note, that WMI doesn't cares about the names, they may be equal or not. 
+.TP
+\fBsave-settings: \f1
+Manually saves session settings (shortcuts, workspace configuration). 
+.TP
+\fBselect-client: \f1
+Selects a client from a list of all clients. 
+.TP
+\fBselect-client-id: \f1
+Selects a client from a list of all client ids. 
+.TP
+\fBselect-frame-down: \f1
+Focusses the downward neighbor frame of the focussed frame. 
+.TP
+\fBselect-frame-left: \f1
+Focusses the leftward neighbor frame of the focussed frame. 
+.TP
+\fBselect-frame-right: \f1
+Focusses the rightward neighbor frame of the focussed frame. 
+.TP
+\fBselect-frame-up: \f1
+Focusses the upward neighbor frame of the focussed frame. 
+.TP
+\fBselect-workspace: \f1
+Provides the names of all workspaces of this monitor and focusses the selected workspace afterwards. 
+.TP
+\fBshow-bars: \f1
+Shows all bars of all frames/clients on the workspace. 
+.TP
+\fBshow-borders: \f1
+Shows all borders of all frames/clients on the workspace. 
+.TP
+\fBshrink-down: \f1
+Shrinks the focussed floating client or frame in south direction. 
+.TP
+\fBshrink-left: \f1
+Shrinks the focussed floating client or frame in west direction. 
+.TP
+\fBshrink-right: \f1
+Shrinks the focussed floating client or frame in east direction. 
+.TP
+\fBshrink-up: \f1
+Shrinks the focussed floating client or frame in north direction. 
+.TP
+\fBsend-client-down: \f1
+Sends the focussed client to its neighbor frame in south direction. 
+.TP
+\fBsend-client-left: \f1
+Sends the focussed client from the focussed frame to its neighbor frame in west direction. 
+.TP
+\fBsend-client-right: \f1
+Sends the focussed client from the focussed frame to its neighbor frame in east direction. 
+.TP
+\fBsend-client-up: \f1
+Sends the focussed client from the focussed frame to its neighbor frame in north direction. 
+.TP
+\fBslot-client: \f1
+Attaches the running client to the slot if WMI was build with slot support. 
+.TP
+\fBsplit-frame-down: \f1
+Splits the focussed frame in south direction. Only valid if at least two clients are attached to the focussed frame. 
+.TP
+\fBsplit-frame-left: \f1
+Splits the focussed frame in west direction. Only valid if at least two clients are attached to the focussed frame. 
+.TP
+\fBsplit-frame-right: \f1
+Splits the focussed frame in east direction. Only valid if at least two clients are attached to the focussed frame. 
+.TP
+\fBsplit-frame-up: \f1
+Splits the focussed frame in north direction. Only valid if at least two clients are attached to the focussed frame. 
+.TP
+\fBsticky-client: \f1
+Makes the focussed client sticky. Sticky means that the client will be visible on all workspaces and always on top. 
+.TP
+\fBstartup-action.name: \f1
+Starts an action after WMI is up and running on each start. 
+.TP
+\fBswap-client-down: \f1
+Swaps the focussed client in the focussed frame with the focussed client of the downward neighbor frame. 
+.TP
+\fBswap-client-left: \f1
+Swaps the focussed client in the focussed frame with the focussed client of the leftward neighbor frame. 
+.TP
+\fBswap-client-right: \f1
+Swaps the focussed client in the focussed frame with the focussed client of the rightward neighbor frame. 
+.TP
+\fBswap-client-up: \f1
+Swaps the focussed client in the focussed frame with the focussed client of the upward neighbor frame. 
+.TP
+\fBswap-frame-down: \f1
+Swaps the focussed frame with the downward neighbor frame. 
+.TP
+\fBswap-frame-left: \f1
+Swaps the focussed frame with the leftward neighbor frame. 
+.TP
+\fBswap-frame-right: \f1
+Swaps the focussed frame with the rightward neighbor frame. 
+.TP
+\fBswap-frame-up: \f1
+Swaps the focussed frame with the upward neighbor frame. 
+.TP
+\fBtoggle-bar: \f1
+Toggles the visibility of the clients or frames titlebar. 
+.TP
+\fBtoggle-border: \f1
+Toggles the visibility of the frame or client border. 
+.TP
+\fBtoggle-client-mode: \f1
+Toggles between floating mode of a client with border and maximized mode. 
+.TP
+\fBtoggle-client-sticky: \f1
+Toggles the focussed client between sticky and floating mode. 
+.TP
+\fBtoggle-float-bar: \f1
+Toggles the visibility of the floating bar. 
+.TP
+\fBtoggle-focus-mode: \f1
+Toggles the focus between frames and floating clients. 
+.TP
+\fBtoggle-inputmode: \f1
+Enters input mode, which will appear in the status bar. 
+.TP
+\fBtoggle-slot: \f1
+Toggles the visibility of the slot. 
+.TP
+\fBtoggle-sloppy-mode: \f1
+Toggles the sloppy focus mode. 
+.TP
+\fBtoggle-status-bar: \f1
+Toggles the visibility of the status bar. 
+.TP
+\fBtoggle-tiled: \f1
+Toggles tiled mode of a frame. 
+.TP
+\fBunslot-client: \f1
+Detaches the last client which has been attached to the slot again. 
+.TP
+\fBunhook-client: \f1
+Unhooks a client from the hooked workspace. 
+.TP
+\fBzoom-client: \f1
+Zooms the focussed client to the tiled (left) column. 
+.SH CONFIGURATION
+If you prefer using WMI actions for configuration of the WMI, you can use create-action, begin/end-record-* and bind-keys from input mode. Such a configuration will be saved to \fIactions.session\f1
+
+Experienced users may use a manually created configuration described in the following.
+
+Note that the \fIactions.conf\f1 will override all definitions made (automatically by WMI) in \fIactions.session\f1. Both files are syntactically equal and you can rename an existing \fIactions.session\f1 to \fIactions.conf\f1 for fine tuning or further manually configuration.
+.SH FORMAT
+The basic format of all \fI.conf\f1 and \fI.session\f1 files is as follows:
+
+key=value
+
+# comment
+
+key=\\#value # '\\' escapes special characters
+
+# special characters are: ", =, \\ and #
+
+If you've whitespaces within values, you've to quote them with '"' characters. You're free to let empty lines or whitespaces before and after keys, the '=' operator and the value. If you need a special character, you've to escape it using the '\\' character, e.g. \\=.
+.SH TYPES OF ACTIONS
+.TP
+\fBextern:\f1
+External actions are aliases to external programs, e.g. mozilla, with following syntax:
+
+extern.< alias name >.cmd="< the command, maybe with arguments >"
+
+extern.< alias name >.keys=< modifier[+modifier]+(key|button) >
+
+The first line defines the command which will be executed if the action defined by < alias name > is invoked. Note that the command needs to be quoted, if it contains whitespaces. The second line defines the shortcut of the action. Note that the second line is optional.
+.TP
+\fBintern:\f1
+Internal actions are such actions defined in \fBwmi(1)\f1. It's forbidden to define external or sequential actions with the same alias name as an internal action has. If you ignore this advice, don't wonder if WMI isn't able to invoke the specific internal action anymore.
+
+Since internal actions have a fixed semantic you can only define a shortcut for them:
+
+intern.< action name >.keys=< modifier[+modifier]+(key|button) >
+
+The line defines the shortcut of the action.
+.TP
+\fBchain:\f1
+The chain mechanism, which represents the ability for user defined sequential action invoking is a special feature of WMI never seen before in other window managers.
+
+Regardless of which type an action within a chain is, everything is possible, except recursion. Recursion means that the chain is calling itself, which would lead to an endless loop. WMI detects such recursion and will stop the invocation of recursive chains immediatly.
+
+Everything is possible means, that you're free to invoke internal, external and sequential actions within one chain arbitrarily.
+
+One scenario which may occur is the invocation of several external applications and afterwards automatic arrangement of them (e.g. split actions or whatever WMI provides) through internal actions. But you'll have problems achieving this, since WMI doesn't waits while chain processing until an external application will be ready and proceed afterwards, because this would be indecisable. So take care yourself, that all actions after an external action within a chain are independently from any client window.
+
+If you want to achieve something like this, you can use \fBwmiremote(1)\f1 with the \fI-a\f1 argument within a script and between external and internal actions you may define some sleep or wait timeouts.
+
+Through chains it's also possible to define aliases for internal actions, one chain with only one internal action could be an alias for it - sometimes this may useful.
+
+The syntax for chains looks as follows:
+
+chain.< alias name >.seq=< action[+arg[+arg ...]] >[,< action ... >] ...
+
+chain.< alias name >.keys=< modifier[+modifier]+(key|button) >
+
+The first line defines the chain. As you can see, all actions of a chain are comma separated and for actions which may need arguments it's optional to smuggle some arguments to these actions with the '+' operator. Note that it's only possible to run defined actions within a chain. If you want to invoke an application from a chain without having defined an external action for it, you could use the following example:
+
+chain.cxterm.seq=exec+xterm
+
+This will use the exec action and smuggle xterm as command to it.
+.SH SHORTCUTS
+The basic format of all shortcuts is: 
+
+[modifier*]+(key|button)[::[modifier*]+(key|button)]*
+
+A modifier is one of the following strings: none, mod1, mod2, mod3, ..., ctrl, shift
+
+A key is a key on your keyboard, note that keys have to be case sensitive to the definitions in \fI< X11/keysymdef.h >\f1, but without the 'XK_' prefix. This means for example, that 'f1' is invalid, you have to use 'F1' instead (same to Left, Right, Up, Down, etc.).
+
+A button is a mouse button, if you've a three-button mouse following buttons are valid: Button1, Button2, Button3.
+.SH AUTHOR
+WMI was written by Anselm R. Garbe < anselmg@t-online.de > and others (see AUTHORS or the WMI site for further information)
+
+You will find the newest version of WMI at \fBhttp://wmi.berlios.de/\f1. There is also a mailing list.
+.SH BUGS
+You should report them to the mailing list.
+.SH SEE ALSO
+\fBwmi(1)\f1, \fBwmiremote(1)\f1, \fBcommon.conf(5)\f1, \fBsession.conf(5)\f1, \fBtheme.conf(5)\f1

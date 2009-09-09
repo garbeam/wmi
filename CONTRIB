@@ -1,0 +1,53 @@
+$Id: CONTRIB 735 2004-09-27 18:36:45Z garbeam $
+
+Current contributors:
+
+    - Ryan Sorensen <rcsorensen at gmail.com>
+      (contributed transient mode patch)
+    - grayrest (varuious valueable feedback)
+    - zahod (contributed new default theme - industrial theme)
+    - Martin Moncrieffe (valueable feedback concerning mathematica)
+    - Hans Ulrich Niedermann (contributed rpm spec file for wmi trunk)
+    - Michael Ihde (contributed doxygen comments, some patches)
+    - Wilson Oliveira (contributed the WMIConf tool)
+    - carmee (contributed various feedback)
+    - Mathieu L (contributed various feedback)
+    - Brian Dorsey (contributed various feedback)
+    - Rajesh Menon (contributed various feedback)
+    - Oliver Kopp (contributed various feedback)
+    - Andreas Gunnarsson <wmi at zzlevo.net>
+      (contributed Split::neighbor() patch)
+    - AntThyKem <antthykem at tiscali.fr>
+      (contributed rpm package)
+    - Fernando Tarlá Cardoso Lemos <fernandotcl at spymac.com>
+      (contributed the wasplite theme, which is based on Matthews wasp theme)
+    - Fabian Braennstroem <f.braennstroem at gmx.de>
+      (contributed archlinux stable and current packages)
+    - Kathryn Andersen <kat_lists at katspace.com>
+      (contributed nice theme and valuable newbie feedback)
+    - Markus Lindorfer <markus.lindorfer at liwest.at>
+      (contributed patch to compile on Solaris)
+    - Marcin Pawlik <wapkil at o2.pl>
+      (contributed Control-keys patch for input mode)
+    - Gavin McCullagh <lists_gmc at fiachra.ucd.ie>
+      (contributed various ideas, active WMI user)
+    - Fernan Bolando <fernanbolando at mailc.net>
+      (one of the most active WMI testers, various ideas)
+    - Frank Ehmsen  <ehmsen at gmx.de> (bug reports and various ideas)
+    - Gavin McCullagh <gavin at fiachra.ucd.ie> (various feedback)
+    - Fernan Bolando <fernanbolando at mailc.net> (various feedback)
+
+Inactive contributors/older contributors:
+
+    - Rainer Trusch (bug reports and some ideas)
+    - Hannes Klas <greathun at gmx.de> (Wiki)
+    - Stefan Kuttler <Deleuze at gmx.net> (Inventor of project name)
+
+Special thanks to following people who gave very useful feedback from
+the very beginning of development:
+
+    - Dr. Frank Boehme (Various ideas, hints, feedback)
+    - Mark Weinem (Various ideas, hints, feedback)
+    - Tuncer M zayamut Ayaz (Provided some WMI paper corrections)
+    - Robert Lillack <rob at lillack.de> (Ideas about window management)
+    - et al.

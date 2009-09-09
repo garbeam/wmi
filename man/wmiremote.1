@@ -1,0 +1,41 @@
+.TH WMI 1 User Manuals
+.SH NAME
+WMI \- Window Manager Improved, a X11 window manager for hackers and real programmers
+.SH SYNOPSIS
+\fBwmiremote [-d \fIdisplay\fB] [-t \fItext\fB] [-a \fIaction\fB\fI[+arg[+arg ...]]\fB] [-m \fINN%text[,NN%text,...]\fB] [-p] [-v]
+\f1
+.SH DESCRIPTION
+Remote tool for WMI which is capable to set user defined status text to the WMI status bar, to pretty print current WMI key bindings (shortcuts) or to invoke WMI actions remotely. 
+.SH OPTIONS
+.TP
+\fB-d \fIdisplay\fB\f1
+Specifies the X display to use. Normally the display provided by the \fI$DISPLAY\f1 environment variable is used. But if you want to use another display, e.g. a display provided by a remote host, just use this option.
+.TP
+\fB-m \fINN%text[,NN%text,...]\fB\f1
+Sets user defined status meters to the status bar. NN stands for a number between 1 and 99 to define the percentage of the meter. The text is a definition what the meter stands for. The text is optional. The usage of a ! before NN reverts the meaning of high and low. Example: '99%high,66%normal,33%low,!99%highrevert' 
+.TP
+\fB-t \fItext\fB\f1
+Sets user defined status text to the status bar of the WMI. Note that the \fItext\f1 string must be quoted if it contains whitespaces. This option is useful if you've running some status scripts which provide time/date information or maybe some other info to the status bar. See \fIexamples\f1 directory of the WMI distribution tarball which contains a \fIstatustext.sh\f1 example script, which sets time/date and APM information to the WMI status bar using wmiremote with the discussed option.
+.TP
+\fB-a \fIaction\fB\fI[+arg[+arg ...]]\fB\f1
+Invokes the specified action within WMI remotely, e.g. split-frame-down. If the action needs some arguments you can smuggle them with following syntax:
+
+wmiremote -a create-workspace+cool
+
+This will create a new workspace with the name "cool" remotely. As you can see the '+' character is used to introduce an argument. 
+
+To get further informations about the actions you can invoke, see \fBwmi(1)\f1.
+.TP
+\fB-p\f1
+Prints current key bindings of WMI.
+.TP
+\fB-v\f1
+Prints the version of WMI.
+.SH AUTHOR
+WMI was written by Anselm R. Garbe < anselmg@t-online.de > and others (see AUTHORS or the WMI site for further information)
+
+You will find the newest version of WMI at \fBhttp://wmi.berlios.de/\f1. There is also a mailing list.
+.SH BUGS
+You should report them to the mailing list.
+.SH SEE ALSO
+\fBwmi(1)\f1

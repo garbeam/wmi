@@ -1,0 +1,96 @@
+$Id: FAQ 735 2004-09-27 18:36:45Z garbeam $
+
+General
+-------
+
+Q: How do I split frames?
+A: First make sure, that your clients are maximized (through click on
+maximize button or invoking toggle-client-mode action).
+Second make sure, that at least two clients are running within the
+focussed frame. If so, just use one of the split-frame-* actions.
+Btw. the opposite of split-frame-* is join-frame-*.
+
+Q: It seems that the actions don't work? Nothing happens if I try to use
+exec action?
+A: Simply answer: you've to press RETURN after each action in input
+mode.
+
+Q: How can I directly select workspaces?
+A: You can use select-workspace action, but you can also define some
+shortcuts to select a specific workspace fast through chains. Just
+define following lines in your $HOME/.wmi/actions.conf file:
+chain.selws1.seq="select-workspace+workspace 1"
+chain.selws1.keys=alt+1
+chain.selws2.seq="select-workspace+workspace 2"
+chain.selws2.keys=alt+1
+This enables alt+1 and alt+2 for direct workspace selection.
+
+Q: How could I determine all installed Xft fonts?
+A: Use 'fc-list ""' command.
+
+Q: How could WMI be minimalist if it has hundreds of actions and
+is highly customizable?
+A: Compared to other window managers WMI is minimalist because it
+concentrates on basic internal actions which can be extended through
+chains or wmiremote scripts, but wether supports menus and icons  nor
+built-in dialogs for various things which may be found in conventional
+window managers.
+But WMI is not as minimalist as evilwm, larswm or failsafewm.
+
+Q: Why is WMI compared with vim?
+A: When WMI was specified, the author was much oriented on the vi-like
+approach of usage. First, it is designated to make it possible to control
+everything from input mode, similiar to vim. But you can control
+everything also via shortcuts, if you've configured any, also similiar
+to vim mappings. Second, you've only one input mode where the statusbar
+is located, this is similiar to vim. In opposite the emacs approach
+is to provide input bars under each buffer. And third, the splitting
+concept of WMI is pretty much oriented on the buffer splitting concept 
+of vim.
+To sum up: The WMI input mode is for window manipulation, the vim
+command mode is for file manipulation.
+
+
+Configuration
+-------------
+
+Q: The Xft fonts appear large, what can I do?
+A: Have a look at 
+http://pdx.freedesktop.org/~fontconfig/fontconfig-user.html, this should
+help you configure the fonts to a size and style you'd prefer.
+
+Q: Ion is more powerful than WMI, because WMI lacks of Lua support.
+A: Really? Who bars you from using Lua in conjunction with wmiremote?
+
+Q: Why is Lua not used as Ion does?
+A: I'm not against Lua in general, it's a simple Turing-complete
+procedural language as many others. You may like it or not.
+I think that the Lua integration in WMI would be adverse.
+First, it's double-complexity, because the time you invest in learning
+Lua could be invested to enhance your knowledge of C++ to implement
+native window manager improvements. Second, it's a bottleneck, because
+you're going to control fast native C++ code with interpreted Lua logic.
+Third, Lua would be an additional build- and runtime dependency, but WMI
+is designed to be a minimalist window manager.
+If you really need Lua 'integration' anyway, just use it in
+conjunction with wmiremote.
+
+Q: How do I undefine the default key bindings?
+A: Insert some dummy action to your actions.conf and bind the keys you
+want to make avaliable for applications to it (eg. alt+q since some
+browsers use that one to quit):
+extern.dummy.cmd=""
+extern.dummy.cmd=alt+q
+in wmi-9 there will also be an action "toggle-all-keys" to undefine
+all keys (useful for nested remote WMI sessions)
+
+
+Development
+-----------
+
+Q: Why X resource management isn't used for configuration files?
+A: Several reasons:
+   - the self-made settings behavior is more simple
+   - iteration over user defined keys is no problem/very simple
+   - configuration is homogetic
+   - the self-made settings behavior performs better
