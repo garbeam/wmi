@@ -1,8 +1,8 @@
-$Id: AUTHORS 735 2004-09-27 18:36:45Z garbeam $
-
 Current developers of the WMI:
 
-    - Anselm R. Garbe <anselmg at t-online.de>
+    - Anselm R Garbe <anselm@garbe.us>
+
+Old developers of the WMI:
     - Marcel Manthe <-0m0- at web.de>
     - Oliver Rendgen <oli at hypeo.de> (Documentation)
     - John Pham <jhnphm at gmail.com> (Debian packager)
