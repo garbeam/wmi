@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2003 - 2004 Anselm R. Garbe <anselmg at t-online.de>
+# Copyright (c) 2003 - 2009 Anselm R Garbe <anselm@garbe.us>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
@@ -20,8 +20,6 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 # DEALINGS IN THE SOFTWARE.
 #
-# $Id: statustext.sh 140 2004-05-05 22:29:34Z garbeam $
-
 # statustext.sh - shows date/time and APM status on the status bar.
 #
 # Just add following line to your .xinitrc to launch this status text:
