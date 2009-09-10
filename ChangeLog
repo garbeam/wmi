@@ -1,4 +1,7 @@
-$Id: ChangeLog 735 2004-09-27 18:36:45Z garbeam $
+wmi-11:
+    * maintenance release
+    * removed autohell dependency
+    * updated source code to compile with nowadays C++ compilers
 
 wmi-10:
     * cycling workspaces focusses the last focussed client

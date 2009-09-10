@@ -79,8 +79,8 @@ clean:
 dist: clean
 	@echo creating dist tarball
 	@mkdir -p wmi-${VERSION}
-	@cp -R LICENSE Makefile README config.def.h config.mk \
-		wmi.1 ${SRC} wmi-${VERSION}
+	@cp -R AUTHORS CONTRIB ChangeLog FAQ INSTALL LICENSE Makefile
+		examples man *.cpp *.h wmi-${VERSION}
 	@tar -cf wmi-${VERSION}.tar wmi-${VERSION}
 	@gzip wmi-${VERSION}.tar
 	@rm -rf wmi-${VERSION}
@@ -90,15 +90,32 @@ install: all
 	@mkdir -p ${DESTDIR}${PREFIX}/bin
 	@cp -f wmi ${DESTDIR}${PREFIX}/bin
 	@chmod 755 ${DESTDIR}${PREFIX}/bin/wmi
-	@echo installing manual page to ${DESTDIR}${MANPREFIX}/man1
+	@cp -f wmiremote ${DESTDIR}${PREFIX}/bin
+	@chmod 755 ${DESTDIR}${PREFIX}/bin/wmiremote
+	@echo installing manual pages to ${DESTDIR}${MANPREFIX}/man1
 	@mkdir -p ${DESTDIR}${MANPREFIX}/man1
-	@sed "s/VERSION/${VERSION}/g" < wmi.1 > ${DESTDIR}${MANPREFIX}/man1/wmi.1
+	@cp -f man/*.1 ${DESTDIR}${MANPREFIX}/man1
 	@chmod 644 ${DESTDIR}${MANPREFIX}/man1/wmi.1
+	@chmod 644 ${DESTDIR}${MANPREFIX}/man1/wmiremote.1
+	@echo installing manual pages to ${DESTDIR}${MANPREFIX}/man5
+	@mkdir -p ${DESTDIR}${MANPREFIX}/man5
+	@cp -f man/*.5 ${DESTDIR}${MANPREFIX}/man5
+	@chmod 644 ${DESTDIR}${MANPREFIX}/man5/actions.conf.5
+	@chmod 644 ${DESTDIR}${MANPREFIX}/man5/common.conf.5
+	@chmod 644 ${DESTDIR}${MANPREFIX}/man5/session.conf.5
+	@chmod 644 ${DESTDIR}${MANPREFIX}/man5/theme.conf.5
 
 uninstall:
 	@echo removing executable file from ${DESTDIR}${PREFIX}/bin
 	@rm -f ${DESTDIR}${PREFIX}/bin/wmi
-	@echo removing manual page from ${DESTDIR}${MANPREFIX}/man1
+	@rm -f ${DESTDIR}${PREFIX}/bin/wmiremote
+	@echo removing manual pages from ${DESTDIR}${MANPREFIX}/man1
 	@rm -f ${DESTDIR}${MANPREFIX}/man1/wmi.1
+	@rm -f ${DESTDIR}${MANPREFIX}/man1/wmi.1
+	@echo removing manual pages from ${DESTDIR}${MANPREFIX}/man1
+	@rm -f ${DESTDIR}${MANPREFIX}/man5/actions.conf.5
+	@rm -f ${DESTDIR}${MANPREFIX}/man5/common.conf.5
+	@rm -f ${DESTDIR}${MANPREFIX}/man5/session.conf.5
+	@rm -f ${DESTDIR}${MANPREFIX}/man5/theme.conf.5
 
 .PHONY: all options clean dist install uninstall
