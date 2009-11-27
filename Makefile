@@ -74,16 +74,16 @@ wmiremote: ${OBJ_wmiremote}
 
 clean:
 	@echo cleaning
-	@rm -f wmi wmiremote ${OBJ_wmi} ${OBJ_wmiremote} wmi-${VERSION}.tar.gz
+	@rm -f wmi wmiremote ${OBJ_wmi} ${OBJ_wmiremote} wmi-${WMI_VERSION}.tar.gz
 
 dist: clean
 	@echo creating dist tarball
-	@mkdir -p wmi-${VERSION}
-	@cp -R AUTHORS CONTRIB ChangeLog FAQ INSTALL LICENSE Makefile
-		examples man *.cpp *.h wmi-${VERSION}
-	@tar -cf wmi-${VERSION}.tar wmi-${VERSION}
-	@gzip wmi-${VERSION}.tar
-	@rm -rf wmi-${VERSION}
+	@mkdir -p wmi-${WMI_VERSION}
+	@cp -R AUTHORS CONTRIB ChangeLog FAQ INSTALL LICENSE Makefile \
+		config.mk examples man *.cpp *.h wmi-${WMI_VERSION}
+	@tar -cf wmi-${WMI_VERSION}.tar wmi-${WMI_VERSION}
+	@gzip wmi-${WMI_VERSION}.tar
+	@rm -rf wmi-${WMI_VERSION}
 
 install: all
 	@echo installing executable file to ${DESTDIR}${PREFIX}/bin
